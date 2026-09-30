@@ -212,6 +212,8 @@ header .brand-logo {
     z-index: 1;
 }
 
+
+
 /* Capa oscura opcional para mejorar la visibilidad del logo */
 .logo-banner::after {
     content: "";
