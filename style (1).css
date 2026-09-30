@@ -1,0 +1,1955 @@
+
+  :root {
+    box-sizing: border-box;
+    --bg: #FFFFFF;
+    --surface: #F4F6F9;
+    --surface-2: #E9ECF2;
+    --line: #DCE1E9;
+    --text: #14161B;
+    --text-dim: #565B68;
+    --blue: #1855D6;
+    --blue-dark: #123F9E;
+    --red: #1855D6;
+    --black: #0B0C10;
+    --radius: 4px;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  /* =========================================
+   ENTRADA DEL HERO
+   ========================================= */
+
+#inicio .eyebrow {
+    opacity: 0;
+    transform: translateY(-25px);
+    animation: heroEntrada 0.8s ease forwards;
+    animation-delay: 0.1s;
+}
+
+#inicio h1 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroEntrada 0.9s ease forwards;
+    animation-delay: 0.25s;
+}
+
+#inicio .lead {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroEntrada 0.9s ease forwards;
+    animation-delay: 0.4s;
+}
+
+#inicio .hero-actions {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroEntrada 0.9s ease forwards;
+    animation-delay: 0.55s;
+}
+
+@keyframes heroEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== LOGO Y NOMBRE DEL ENCABEZADO ===== */
+
+/* Separa el logo del menú: logo a la esquina izquierda, menú a la derecha */
+/* Logo del encabezado en forma circular */
+header .brand-logo {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    max-width: none;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin-left: -195px;
+}
+
+@media (max-width: 640px) {
+    header .brand-logo {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+    }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    #inicio .eyebrow,
+    #inicio h1,
+    #inicio .lead,
+    #inicio .hero-actions {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+}
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #FFFFFF; --surface: #F4F6F9; --surface-2: #E9ECF2; --line: #DCE1E9;
+      --text: #14161B; --text-dim: #565B68; --blue: #1855D6; --red: #1855D6; --black: #0B0C10;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #FFFFFF; --surface: #F4F6F9; --surface-2: #E9ECF2; --line: #DCE1E9;
+    --text: #14161B; --text-dim: #565B68; --blue: #1855D6; --red: #1855D6; --black: #0B0C10;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px)); height: 100%; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100%; background: var(--bg); color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+  h1, h2, h3, .display { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; line-height: 1.08; margin: 0; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { max-width: 100%; display: block; }
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--blue); outline-offset: 3px;
+  }
+
+  header {
+    position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 100;
+    background: var(--black); border-bottom: 1px solid #000;
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; color: #fff; }
+ 
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+  .brand .dot { color: var(--red); }
+
+  nav.links { display: flex; gap: 2px; align-items: center; }
+  nav.links > a {
+    padding: 10px 14px; font-size: 0.92rem; font-weight: 500; color: #C7CBD6;
+    border-radius: var(--radius); transition: color .15s ease, background .15s ease; white-space: nowrap;
+  }
+  nav.links > a:hover { color: #fff; background: #1B1D24; }
+  nav.links > a.active { color: #fff; background: var(--blue); }
+  .nav-cta { background: var(--red) !important; color: #fff !important; margin-left: 6px; font-weight: 600; }
+  .nav-cta:hover { background: #123F9E !important; color: #fff !important; }
+
+  details.has-sub { position: relative; }
+  details.has-sub summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; gap: 5px;
+    padding: 10px 14px; font-size: 0.92rem; font-weight: 500; color: #C7CBD6; border-radius: var(--radius);
+    transition: color .15s ease, background .15s ease;
+  }
+  details.has-sub summary::-webkit-details-marker { display: none; }
+  details.has-sub summary:hover { color: #fff; background: #1B1D24; }
+  details.has-sub summary svg { transition: transform .15s ease; }
+  details.has-sub[open] summary svg { transform: rotate(180deg); }
+  details.has-sub[open] summary { color: #fff; background: #1B1D24; }
+  .submenu {
+    list-style: none; margin: 8px 0 0; padding: 8px; position: absolute; top: 100%; left: 0;
+    background: #fff; border: 1px solid var(--line); border-radius: 6px; min-width: 190px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.28); z-index: 5;
+  }
+  .submenu li a { display: block; padding: 10px 12px; border-radius: var(--radius); font-size: 0.9rem; color: var(--text); }
+  .submenu li a:hover { color: var(--blue); background: var(--surface); }
+
+  .menu-toggle {
+    display: none; background: none; border: 1px solid #33353E; border-radius: var(--radius);
+    width: 42px; height: 42px; color: #fff; cursor: pointer; align-items: center; justify-content: center;
+  }
+
+  /* Contenedor del banner y del logo */
+.logo-banner {
+    position: relative;
+    width: 100%;
+    height: 620px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* Imagen horizontal de fondo */
+.banner-background {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    z-index: 1;
+}
+
+/* Capa oscura opcional para mejorar la visibilidad del logo */
+.logo-banner::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.20);
+
+    z-index: 2;
+}
+
+/* Logo circular encima del banner */
+.logo-banner .logo-mark {
+    position: relative;
+    z-index: 3;
+
+    background: transparent;
+}
+  
+.logo-mark {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.logo-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+
+/* =========================================
+   BANNER COMPLETO CON LOGO Y BOTONES ENCIMA
+   ========================================= */
+
+.hero-top {
+    position: relative;
+
+    width: 100%;
+    min-height: 650px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 90px 30px 70px;
+
+    overflow: hidden;
+
+    background-image: url("banner-team-merengue.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Capa oscura sobre el banner */
+.hero-top::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 12, 40, 0.38);
+
+    z-index: 1;
+}
+
+/* Todo el contenido queda por encima de la imagen */
+.hero-top > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Texto superior */
+.hero-top .eyebrow {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* Logo circular */
+.hero-top .logo-mark {
+    position: relative;
+    z-index: 3;
+
+    background: transparent;
+    margin: 0;
+}
+
+/* Mantiene el logo circular */
+.hero-top .logo-mark img {
+    width: 280px;
+    height: 280px;
+
+    object-fit: contain;
+    display: block;
+}
+
+/* Botones encima del banner, junto al logo */
+.hero-top .hero-actions {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+/* Botón principal */
+.hero-top .btn-primary {
+    color: #ffffff;
+}
+
+/* Botón secundario visible sobre el fondo */
+.hero-top .btn-outline-dark {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    background: transparent;
+}
+
+.hero-top .btn-outline-dark:hover {
+    color: #0b1f45;
+    background: #ffffff;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 768px) {
+    .hero-top {
+        min-height: 560px;
+        padding: 80px 20px 50px;
+    }
+
+    .hero-top .logo-mark img {
+        width: 210px;
+        height: 210px;
+    }
+
+    .hero-top .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+  @media (max-width: 900px) {
+    nav.links {
+      position: fixed; top: calc(76px + env(safe-area-inset-top, 0px)); left: 0; right: 0; bottom: 0;
+      background: var(--black); flex-direction: column; align-items: stretch; padding: 16px;
+      transform: translateX(100%); transition: transform .25s ease; overflow-y: auto;
+    }
+    nav.links.open { transform: translateX(0); }
+    nav.links > a { padding: 16px; font-size: 1.05rem; border-bottom: 1px solid #22242C; border-radius: 0; }
+    .nav-cta { margin: 12px 0 0; text-align: center; }
+    .menu-toggle { display: flex; }
+    details.has-sub summary { padding: 16px; font-size: 1.05rem; border-bottom: 1px solid #22242C; }
+    .submenu {
+      position: static; box-shadow: none; border: none; border-radius: 0; background: #16171D;
+      margin-top: 0; padding: 4px 0;
+    }
+    .submenu li a { padding: 14px 28px; border-bottom: 1px solid #22242C; color: #C7CBD6; }
+    .submenu li a:hover { color: #fff; background: #1B1D24; }
+  }
+
+  /* ---------- hero: centrado, como el tope de LizmoroTech ---------- */
+  .hero { position: relative; padding: calc(76px + env(safe-area-inset-top, 0px)) 24px 0; background: var(--black); overflow: hidden; }
+  .hero-top { max-width: 760px; margin: 0 auto; padding: 72px 0 56px; text-align: center; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #C7CBD6; font-size: 0.85rem; font-weight: 600; margin-bottom: 18px; }
+  .eyebrow .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(1.4); } }
+  .hero-top h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); color: #fff; }
+  .hero-top h1 span { color: var(--red); }
+  .hero-top .lead { margin: 22px auto 0; max-width: 46ch; font-size: 1.08rem; color: #A9AEBC; }
+  .logo-mark {
+    width: 132px; height: 132px; border-radius: 50%; margin: 18px auto 0;
+    background: linear-gradient(135deg, var(--blue), var(--red));
+    display: flex; align-items: center; justify-content: center;
+    border: 3px solid rgba(255,255,255,0.15);
+  }
+  .hero-actions { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: var(--radius);
+    font-weight: 600; font-size: 0.95rem; border: 1px solid transparent; cursor: pointer;
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn {
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(24, 85, 214, 0.20);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.97);
+}
+  .btn-primary { background: var(--red); color: #fff; }
+  .btn-primary:hover { background: #123F9E; }
+  .btn-blue { background: var(--blue); color: #fff; }
+  .btn-blue:hover { background: var(--blue-dark); }
+  .btn-outline-dark { border-color: #33353E; color: #fff; background: transparent; }
+  .btn-outline-dark:hover { border-color: var(--blue); color: #6FA0FF; }
+  .btn-outline { border-color: var(--line); color: var(--text); background: transparent; }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+  .word-panel { background: #fff; border-radius: 14px 14px 0 0; padding: 64px 24px; text-align: center; }
+  .word-panel .big-word { font-size: clamp(2.2rem, 6vw, 3.6rem); color: var(--blue); }
+  .word-panel p { max-width: 62ch; margin: 18px auto 0; color: var(--text-dim); font-size: 1.04rem; }
+
+  /* bloques imagen + botón, al estilo LizmoroTech */
+  .feature-blocks { display: grid; gap: 1px; background: var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .feature-block { background: #fff; padding: 56px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .feature-block:nth-child(even) .fb-art { order: 2; }
+  .fb-art { aspect-ratio: 16/10; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .fb-text h3 { font-size: 1.5rem; }
+  .fb-text p { margin-top: 12px; color: var(--text-dim); font-size: 0.98rem; max-width: 46ch; }
+  .fb-text .btn { margin-top: 22px; }
+  @media (max-width: 760px) {
+    .feature-block { grid-template-columns: 1fr; padding: 40px 24px; }
+    .feature-block:nth-child(even) .fb-art { order: 0; }
+  }
+
+  /* ---------- section shell ---------- */
+  section { padding: 92px 0; border-bottom: 1px solid var(--line); }
+  .section-head { max-width: 640px; margin-bottom: 48px; }
+  .kicker { color: var(--blue); font-weight: 600; font-size: 0.85rem; margin-bottom: 10px; }
+  .section-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); }
+  .section-head p { margin-top: 14px; color: var(--text-dim); font-size: 1.02rem; max-width: 58ch; }
+
+  /* ---------- nosotros ---------- */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .about-copy p + p { margin-top: 16px; color: var(--text-dim); }
+  .about-copy strong { color: var(--text); }
+  .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .stat { background: var(--surface); padding: 26px 18px; text-align: left; }
+  .stat .num { font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--red); }
+  .stat .cap { color: var(--text-dim); font-size: 0.83rem; margin-top: 6px; }
+
+  .mvv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  .mvv-card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 24px; scroll-margin-top: 110px; }
+  .mvv-card .ico { width: 36px; height: 36px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; color: var(--blue); margin-bottom: 14px; }
+  .mvv-card h3 { font-size: 1.05rem; }
+  .mvv-card p { color: var(--text-dim); font-size: 0.92rem; margin-top: 10px; }
+
+  .schools-list { margin-top: 44px; }
+  .schools-list h3 { font-size: 1.05rem; margin-bottom: 16px; }
+  .schools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .school-item { display: flex; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; font-size: 0.88rem; color: var(--text-dim); }
+  .school-item svg { flex: none; color: var(--red); }
+
+  /* ---------- equipo ---------- */
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .team-card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 22px; transition: border-color .15s ease; }
+  .team-card:hover { border-color: var(--blue); }
+  .team-card .avatar {
+    width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--red));
+    display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; color: #fff; margin-bottom: 16px;
+  }
+  .team-card h3 { font-size: 1rem; }
+  .team-card .role { color: var(--red); font-size: 0.82rem; margin-top: 4px; font-weight: 600; }
+  .team-card p.desc { color: var(--text-dim); font-size: 0.88rem; margin-top: 10px; }
+
+  /* ---------- logros timeline ---------- */
+  .timeline { position: relative; margin-left: 8px; padding-left: 34px; border-left: 2px solid var(--line); display: grid; gap: 40px; }
+  .tl-item { position: relative; }
+  .tl-item::before {
+    content: attr(data-n); position: absolute; left: -47px; top: -2px; width: 30px; height: 30px; border-radius: 50%;
+    background: #fff; border: 2px solid var(--blue); color: var(--blue); display: flex; align-items: center;
+    justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 700;
+  }
+  .tl-item .year { color: var(--red); font-weight: 600; font-size: 0.88rem; margin-bottom: 6px; font-family: 'Space Grotesk', sans-serif; }
+  .tl-item h3 { font-size: 1.1rem; }
+  .tl-item p { color: var(--text-dim); margin-top: 6px; font-size: 0.95rem; max-width: 60ch; }
+
+  /* ---------- prensa ---------- */
+  .press-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .press-card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
+  .press-card .src { color: var(--red); font-size: 0.78rem; font-weight: 600; }
+  .press-card h3 { font-size: 1rem; }
+  .press-card p { color: var(--text-dim); font-size: 0.88rem; }
+  .press-card .go { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; color: var(--blue); font-size: 0.88rem; font-weight: 600; }
+  .press-card:hover .go { text-decoration: underline; }
+
+  /* ---------- donar / patrocinar ---------- */
+  form#sponsorForm, form#contactForm { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 28px; max-width: 620px; margin: 0 auto; }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 7px; color: var(--text); }
+  .field .req { color: var(--red); }
+  .field input, .field select, .field textarea {
+    width: 100%; background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 12px 13px; color: var(--text); font-family: inherit; font-size: 0.95rem;
+  }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .field input::placeholder, .field textarea::placeholder { color: #9AA0AD; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
+  .radio-pill { border: 1px solid var(--line); border-radius: 20px; padding: 9px 16px; font-size: 0.86rem; cursor: pointer; color: var(--text-dim); transition: all .15s ease; background: #fff; }
+  .radio-pill input { display: none; }
+  .radio-pill.checked { border-color: var(--blue); color: var(--blue); background: rgba(24,85,214,0.08); }
+  .error-msg { color: var(--red); font-size: 0.8rem; margin-top: 6px; display: none; }
+  .field.invalid .error-msg { display: block; }
+  .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--red); }
+  #formStatus, #contactStatus { margin-top: 16px; padding: 14px 16px; border-radius: var(--radius); font-size: 0.9rem; display: none; }
+  #formStatus.ok, #contactStatus.ok { display: block; background: rgba(24,85,214,0.08); border: 1px solid var(--blue); color: var(--blue-dark); }
+  #formStatus.bad, #contactStatus.bad { display: block; background: rgba(224,51,43,0.08); border: 1px solid var(--red); color: var(--red); }
+  .submit-btn { width: 100%; justify-content: center; padding: 15px; }
+
+  /* ---------- contacto ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-list { display: grid; gap: 20px; }
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-item .ico { flex: none; width: 40px; height: 40px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; color: var(--blue); }
+  .contact-item h3 { font-size: 0.95rem; }
+  .contact-item p, .contact-item a { color: var(--text-dim); font-size: 0.92rem; margin-top: 4px; }
+  .contact-item a:hover { color: var(--blue); }
+  .contact-note { margin-top: 24px; font-size: 0.82rem; color: var(--text-dim); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+
+  /* ---------- footer ---------- */
+  footer { padding: 44px 24px; background: var(--black); color: #A9AEBC; }
+  .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  footer .brand { font-size: 1rem; color: #fff; }
+  footer p { font-size: 0.85rem; }
+
+  @media (max-width: 900px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .mvv-grid { grid-template-columns: 1fr; }
+    .press-grid, .schools-grid { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+  }
+
+  /* =========================================
+   ANIMACIÓN DE ENTRADA AL HACER SCROLL
+   ========================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   ANIMACIÓN DE IMÁGENES
+   ========================================= */
+
+.feature-block .fb-art,
+.figuras-art,
+.logros-art,
+.merenguito-card {
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.feature-block:hover .fb-art,
+.figuras-art:hover,
+.logros-art:hover,
+.merenguito-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(20, 35, 60, 0.14);
+}
+
+.feature-block .fb-art img,
+.merenguito-image {
+    transition: transform 0.6s ease;
+}
+
+.feature-block:hover .fb-art img,
+.merenguito-card:hover .merenguito-image {
+    transform: scale(1.04);
+}
+
+/* =========================================
+   TARJETAS DEL EQUIPO
+   ========================================= */
+
+.team-card {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--blue);
+    box-shadow: 0 14px 30px rgba(20, 35, 60, 0.12);
+}
+
+
+/* ==========================================
+   BANNER A TODO EL ANCHO DE LA PANTALLA
+   ========================================== */
+
+/* Sección principal sin márgenes laterales */
+#inicio.hero {
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    overflow: hidden;
+}
+
+/* Banner de extremo a extremo */
+#inicio .hero-top {
+    position: relative;
+    isolation: isolate;
+
+    width: 100vw;
+    max-width: none;
+
+    min-height: 700px;
+
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 110px 20px 80px;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 10, 35, 0.35),
+            rgba(0, 10, 35, 0.35)
+        ),
+        url("banner-team-merengue.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Logo y botones encima del banner */
+#inicio .hero-top > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo centrado */
+#inicio .logo-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 280px;
+    height: 280px;
+
+    margin: 0 auto;
+    background: transparent;
+}
+
+/* Botones debajo del logo */
+#inicio .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 16px;
+    margin-top: 30px;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 768px) {
+    #inicio .hero-top {
+        width: 100vw;
+        min-height: 600px;
+
+        padding: 90px 20px 60px;
+    }
+
+    #inicio .logo-mark {
+        width: 220px;
+        height: 220px;
+    }
+
+    #inicio .hero-actions {
+        flex-direction: column;
+    }
+}
+
+
+/* ==========================================
+   FONDO COMPLETO DE TODA LA SECCIÓN HERO
+   ========================================== */
+
+#inicio.hero {
+    position: relative;
+    isolation: isolate;
+
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    overflow: hidden;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 10, 35, 0.35),
+            rgba(0, 10, 35, 0.35)
+        ),
+        url("banner-team-merengue.png");
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+/* Todos los elementos quedan sobre el fondo */
+#inicio.hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* La zona del logo ya no tiene otro fondo */
+#inicio .hero-top {
+    width: 100%;
+    max-width: none;
+
+    min-height: 700px;
+
+    margin: 0;
+    padding: 110px 20px 80px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+}
+
+/* Logo centrado */
+#inicio .logo-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 280px;
+    height: 280px;
+
+    margin: 0 auto;
+    background: transparent;
+}
+
+/* Botones debajo del logo */
+#inicio .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 16px;
+    margin-top: 30px;
+}
+
+/* Mantiene las partes siguientes dentro del mismo fondo */
+#inicio .word-panel,
+#inicio .feature-blocks {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+}
+
+/* Evita que las tarjetas tengan un fondo negro inesperado */
+#inicio .word-panel {
+    background: transparent;
+}
+
+#inicio.hero {
+    background-position: center top;
+    background-size: cover;
+}
+
+/* ==========================================
+   AJUSTE FINAL DEL BANNER Y ORGULLO DOMINICANO
+   ========================================== */
+
+/* La sección completa vuelve a tener fondo blanco */
+#inicio.hero {
+    background: #ffffff !important;
+    background-image: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* La imagen queda únicamente en el panel de inicio */
+#inicio .hero-top {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    min-height: 650px;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 20px 80px;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 10, 35, 0.35),
+            rgba(0, 10, 35, 0.35)
+        ),
+        url("banner-team-merengue.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* El contenido del panel queda encima de la imagen */
+#inicio .hero-top > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Orgullo dominicano vuelve a la parte blanca */
+#inicio .word-panel {
+    position: relative;
+    z-index: 3;
+
+    width: 100%;
+    background: #ffffff !important;
+    border-radius: 14px 14px 0 0;
+
+    padding: 64px 24px;
+    text-align: center;
+}
+
+/* Texto de Orgullo dominicano */
+#inicio .word-panel .big-word {
+    color: var(--blue);
+}
+
+#inicio .word-panel p {
+    color: var(--text-dim);
+}
+
+/* Las tarjetas siguientes también permanecen blancas */
+#inicio .feature-blocks {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    background: var(--line);
+}
+
+#inicio .feature-block {
+    background: #ffffff;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    #inicio .hero-top {
+        min-height: 10px;
+        padding: 90px 20px 60px;
+    }
+}
+
+/* ==========================================
+   PANEL DE INICIO SIN LOGO
+   ========================================== */
+
+#inicio .hero-top {
+    min-height: 850px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 120px 20px 100px;
+}
+
+/* Ocultar el logo */
+#inicio .hero-top .logo-mark {
+    display: none !important;
+}
+
+/* Texto superior */
+#inicio .hero-top .eyebrow {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Botones centrados y uno debajo del otro */
+#inicio .hero-top .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    gap: 14px;
+    margin-top: 0;
+}
+
+/* Tamaño de los botones */
+#inicio .hero-top .hero-actions .btn {
+    width: 280px;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    #inicio .hero-top {
+        min-height: 700px;
+        padding: 100px 20px 80px;
+    }
+}
+/* ==========================================
+   FOTO DE FONDO PARA TODO EL ESPACIO SUPERIOR
+   (desde el header hasta antes de "Nosotros")
+   ========================================== */
+
+#inicio.hero {
+    position: relative;
+    isolation: isolate;
+    background: #0b1f45 !important;
+}
+
+/* Ya no hace falta el recuadro de imagen anterior: la foto ahora es el fondo de toda la sección */
+#inicio .logo-banner {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    overflow: visible;
+}
+#inicio .logo-banner::after { content: none; }
+#inicio .logo-banner .banner-background { display: none; }
+
+#inicio .hero-top {
+    min-height: 500px;
+    padding: 100px 20px 60px;
+
+    background-image:
+        linear-gradient(rgba(0, 10, 35, 0.55), rgba(0, 10, 35, 0.55)),
+        url("fofto de fondo.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* "Orgullo dominicano" queda como tarjeta blanca legible sobre la foto */
+#inicio .word-panel {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.96) !important;
+    border-radius: 14px;
+    margin: 0 20px;
+}
+
+/* Deja ver la foto en los espacios entre tarjetas */
+#inicio .feature-blocks {
+    background: transparent;
+}
+
+@media (max-width: 768px) {
+    #inicio .hero-top {
+        padding: 110px 20px 50px;
+    }
+}
+
+
+/* QUITAR LA IMAGEN DEL FONDO GENERAL */
+
+body {
+    background-image: none !important;
+    background-color: white !important;
+}
+
+#inicio {
+    background-image: none !important;
+    background-color: white !important;
+}
+
+#inicio.hero {
+    background-image: none !important;
+    background-color: white !important;
+}
+
+/* IMAGEN SOLAMENTE EN LA PARTE SUPERIOR */
+
+#inicio .hero-top {
+    background-image:
+        linear-gradient(3
+            rgba(0, 10, 35, 0.45),
+            rgba(0, 10, 35, 0.45)
+        ),
+        url("fofto de fondo.jpg") !important;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+
+    min-height: 450px !important;
+    padding: 100px 20px 60px !important;
+}
+
+/* =========================================
+   ANIMACIONES PARA LOS ICONOS
+   ========================================= */
+
+/* Iconos de las tarjetas */
+.ico,
+.mvv-card .ico,
+.contact-item .ico,
+.school-item svg {
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Animación al pasar el mouse */
+.mvv-card:hover .ico,
+.contact-item:hover .ico {
+    transform: translateY(-8px) scale(1.1);
+    background-color: var(--blue);
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(24, 85, 214, 0.30);
+}
+
+/* Iconos de las escuelas */
+.school-item:hover svg {
+    transform: translateX(6px) scale(1.15);
+    color: var(--blue);
+}
+
+/* Animación de los iconos dentro de los botones */
+.btn svg {
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.btn:hover svg {
+    transform: translateX(5px) rotate(5deg);
+}
+
+/* Animación de los iconos de contacto */
+.contact-item:hover .ico svg {
+    transform: rotate(8deg) scale(1.1);
+}
+
+/* Animación suave de las tarjetas */
+.mvv-card,
+.contact-item,
+.school-item {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.mvv-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--blue);
+    box-shadow: 0 10px 25px rgba(24, 85, 214, 0.12);
+}
+
+.school-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(24, 85, 214, 0.10);
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
+}
+
+/* Animación para los iconos de las tarjetas del equipo */
+.team-card .avatar {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.team-card:hover .avatar {
+    transform: scale(1.12) rotate(5deg);
+    box-shadow: 0 8px 18px rgba(24, 85, 214, 0.25);
+}
+
+/* Evita animaciones para usuarios que las desactivan */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* =========================================
+   LOGOS DE LOS CENTROS EDUCATIVOS
+   ========================================= */
+
+.school-logo {
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    object-fit: contain;
+    display: block;
+
+    border-radius: 50%;
+}
+
+/* =========================================
+   LOGOS DE LOS CENTROS EDUCATIVOS
+   ========================================= */
+
+.school-item .school-logo {
+    width: 42px !important;
+    height: 42px !important;
+
+    min-width: 42px !important;
+    max-width: 42px !important;
+
+    min-height: 42px !important;
+    max-height: 42px !important;
+
+    flex: 0 0 42px !important;
+
+    display: block !important;
+
+    object-fit: contain !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: none !important;
+    border-radius: 50% !important;
+}
+
+/* =========================================
+   CENTROS EDUCATIVOS
+   MISMO EFECTO QUE MISIÓN, VISIÓN Y VALORES
+   ========================================= */
+
+.school-item {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.school-item:hover {
+    transform: translateY(-6px);
+    border-color: var(--blue);
+    box-shadow: 0 10px 25px rgba(24, 85, 214, 0.12);
+}
+
+/* =========================================
+   NOS HAN MENCIONADO
+   MISMO EFECTO QUE MISIÓN, VISIÓN Y VALORES
+   ========================================= */
+
+.press-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.press-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--blue);
+    box-shadow: 0 10px 25px rgba(24, 85, 214, 0.12);
+}
+
+
+/* Logo de la escuela */
+.school-item .school-logo {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Al pasar el mouse, el logo crece suavemente */
+.school-item:hover .school-logo {
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 8px 18px rgba(24, 85, 214, 0.30);
+}
+
+/* =========================================
+   DONA O PATROCINA - CONTENEDOR ADAPTATIVO
+   ========================================= */
+
+.dona-art {
+    aspect-ratio: auto;
+    height: auto;
+    min-height: 0;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.dona-imagen {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    margin: 0;
+    border-radius: 10px;
+}
+
+/* =========================================
+   HERO - FONDO AUTOMÁTICO (5 IMÁGENES, 3s, SIN CONTROLES)
+   El cambio de imagen lo controla script.js (bloque
+   "HERO - FONDO AUTOMÁTICO"); aquí solo se define el
+   crossfade y la capa oscura para legibilidad del texto.
+   ========================================= */
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #0b1f45;
+}
+
+/* Le gana en especificidad a "#inicio .hero-top > *"
+   (que pondría position:relative a todos los hijos)
+   para que el fondo siga ocupando toda la sección. */
+#inicio .hero-top > .hero-bg {
+    position: absolute;
+    z-index: 0;
+}
+
+.hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.hero-bg-img.is-active {
+    opacity: 1;
+}
+
+/* Capa oscura sobre las fotos del Hero para que el
+   texto y los botones se lean bien con cualquier foto */
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 10, 35, 0.45), rgba(0, 10, 35, 0.45));
+}
+
+.feature-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+/* =========================================
+   FIGURAS IMPORTANTES - CARRUSEL
+   ========================================= */
+
+.figuras-card {
+    align-items: stretch;
+}
+
+/* Contenedor de la imagen */
+.figuras-art {
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    padding: 0;
+}
+
+/* Carrusel */
+.figuras-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.figuras-slider img {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* Botones de navegación */
+.figura-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--blue);
+
+    font-size: 18px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2;
+}
+
+.figura-btn:hover {
+    background: var(--blue);
+    color: white;
+}
+
+.figura-prev {
+    left: 12px;
+}
+
+.figura-next {
+    right: 12px;
+}
+
+/* Texto centrado */
+.figuras-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.figura-contenido {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.figura-numero {
+    display: block;
+    color: var(--blue);
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.figura-contenido h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.figura-contenido p {
+    margin-top: 12px;
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+/* Indicadores */
+.figura-puntos {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.figura-punto {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: #C5CAD4;
+    cursor: pointer;
+}
+
+.figura-punto.activo {
+    background: var(--blue);
+}
+
+/* Celulares */
+@media (max-width: 760px) {
+
+    .figuras-card {
+        grid-template-columns: 1fr;
+    }
+
+    .figuras-art {
+        min-height: 250px;
+    }
+
+    .figuras-slider,
+    .figuras-slider img {
+        min-height: 250px;
+        height: 250px;
+    }
+
+    .figuras-text {
+        padding: 20px 0 10px;
+    }
+
+}
+
+
+/* =========================================
+   NUESTROS LOGROS - CARRUSEL (manual, sin autoplay)
+   Reutiliza .figura-btn / .figura-numero / .figura-puntos
+   ========================================= */
+
+.logros-carousel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.logros-art {
+    position: relative;
+    min-height: 340px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.logros-art img {
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.logros-info {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logros-info .figura-numero {
+    margin-top: 0;
+}
+
+.logros-info .year {
+    color: var(--red);
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-top: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.logros-info h3 {
+    font-size: 1.4rem;
+    margin-top: 8px;
+}
+
+.logros-info p {
+    margin-top: 12px;
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+.logros-info .figura-puntos {
+    justify-content: flex-start;
+}
+
+@media (max-width: 760px) {
+
+    .logros-carousel {
+        grid-template-columns: 1fr;
+    }
+
+    .logros-art {
+        min-height: 240px;
+    }
+
+    .logros-art img {
+        min-height: 240px;
+        height: 240px;
+    }
+
+    .logros-info {
+        padding: 28px 24px;
+    }
+
+}
+
+/* =========================================================
+   MODIFICACIONES DEL CARRUSEL Y TEAM MERENGUITO FLL
+   ========================================================= */
+
+/* =========================================================
+   NUEVOS COMPONENTES — TEAM MERENGUE
+   ========================================================= */
+
+/* HERO: solo este carrusel es automático */
+.logo-banner{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+}
+.logo-banner > .banner-background{
+    display:none !important;
+}
+.hero-bg-carousel{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+.hero-bg-slide{
+    position:absolute;
+    inset:0;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    opacity:0;
+    transition:opacity 900ms ease-in-out;
+}
+.hero-bg-slide.is-active{
+    opacity:1;
+}
+.hero-bg-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.38),rgba(0,0,0,.48));
+}
+.logo-banner > *:not(.hero-bg-carousel){
+    position:relative;
+    z-index:2;
+}
+.hero-actions{
+    justify-content:center !important;
+    align-items:center;
+}
+
+/* FIGURAS Y PREMIOS: controles manuales */
+.figuras-slider,
+.premios-slider{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+.figura-imagen,
+.premio-imagen{
+    transition:opacity .35s ease, transform .35s ease;
+}
+
+.figura-imagen:hover,
+.premio-imagen:hover {
+    transform: scale(1.025);
+}
+
+.figura-btn,
+.premio-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:5;
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    background:rgba(255,255,255,.94);
+    color:#1855D6;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+    font-size:20px;
+    transition:transform .2s ease, background .2s ease;
+}
+.figura-btn:hover,
+.premio-btn:hover{
+    transform:translateY(-50%) scale(1.06);
+    background:#fff;
+}
+.figura-prev,
+.premio-prev{left:12px;}
+.figura-next,
+.premio-next{right:12px;}
+
+.figura-puntos,
+.premio-puntos{
+    display:flex;
+    gap:7px;
+    margin:12px 0 16px;
+}
+.figura-punto,
+.premio-punto{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    border:0;
+    padding:0;
+    background:#c9c9c9;
+    cursor:pointer;
+}
+.figura-punto.active,
+.premio-punto.active{
+    background:#1855D6;
+    transform:scale(1.2);
+}
+.figura-numero,
+.premio-numero{
+    display:block;
+    margin:6px 0 10px;
+    font-size:.82rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    color:#1855D6;
+}
+
+/* Team Merenguito FLL */
+.team-merenguito-section{
+    padding:80px 0;
+    background:linear-gradient(180deg,#fff,#f7f9fc);
+}
+.merenguito-row{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:40px;
+    align-items:center;
+    margin-top:46px;
+}
+.merenguito-row-two{
+    margin-top:64px;
+}
+.merenguito-card{
+    overflow:hidden;
+    border-radius:22px;
+    background:#fff;
+    box-shadow:0 14px 38px rgba(20,35,60,.12);
+    border:1px solid rgba(24,85,214,.1);
+}
+.merenguito-image-wrap{
+    aspect-ratio:16/10;
+    overflow:hidden;
+    background:#eef2f8;
+}
+.merenguito-image{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+}
+.merenguito-card-body{
+    padding:24px;
+}
+.merenguito-card-body h3{
+    margin:5px 0 0;
+}
+.merenguito-copy{
+    padding:10px 12px;
+}
+.merenguito-copy h3{
+    margin-top:0;
+}
+.merenguito-copy p{
+    line-height:1.75;
+}
+@media (max-width:800px){
+    .merenguito-row,
+    .merenguito-row-two{
+        grid-template-columns:1fr;
+        gap:24px;
+        margin-top:36px;
+    }
+    .merenguito-row-two .merenguito-copy{
+        order:1;
+    }
+    .merenguito-row-two .merenguito-card{
+        order:2;
+    }
+    .figura-btn,
+    .premio-btn{
+        width:38px;
+        height:38px;
+    }
+}
+@media (prefers-reduced-motion:reduce){
+    .hero-bg-slide,
+    .figura-imagen,
+    .premio-imagen{
+        transition:none !important;
+    }
+}
+
+/* =========================================
+   ANIMACIONES EXTRA - TEAM MERENGUE
+   ========================================= */
+
+/* ENTRADA AL HACER SCROLL */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* IMÁGENES Y BLOQUES */
+.feature-block .fb-art,
+.figuras-art,
+.logros-art,
+.merenguito-card {
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.feature-block:hover .fb-art,
+.figuras-art:hover,
+.logros-art:hover,
+.merenguito-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(20, 35, 60, 0.14);
+}
+
+.feature-block .fb-art img,
+.merenguito-image {
+    transition: transform 0.6s ease;
+}
+
+.feature-block:hover .fb-art img,
+.merenguito-card:hover .merenguito-image {
+    transform: scale(1.04);
+}
+
+/* =========================================
+   PREMIOS OBTENIDOS - IMAGEN SIN DEFORMAR
+   ========================================= */
+
+.premios-art {
+    position: relative;
+    height: 380px;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.premios-slider {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* IMPORTANTE:
+   La imagen mantiene su proporción original */
+.premios-slider .premio-imagen {
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+    margin: 0;
+
+    border-radius: 12px;
+}
+
+/* TARJETAS DEL EQUIPO */
+.team-card {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--blue);
+    box-shadow: 0 14px 30px rgba(20, 35, 60, 0.12);
+}
+
+
+/* BOTONES */
+.btn {
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(24, 85, 214, 0.20);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+
+/* HERO */
+#inicio .eyebrow {
+    animation: heroFadeDown 0.8s ease both;
+}
+
+#inicio h1 {
+    animation: heroFadeUp 0.9s 0.15s ease both;
+}
+
+#inicio .lead {
+    animation: heroFadeUp 0.9s 0.3s ease both;
+}
+
+#inicio .hero-actions {
+    animation: heroFadeUp 0.9s 0.45s ease both;
+}
+
+@keyframes heroFadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* RESPETO A USUARIOS QUE REDUCEN ANIMACIONES */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    #inicio .eyebrow,
+    #inicio h1,
+    #inicio .lead,
+    #inicio .hero-actions {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}
